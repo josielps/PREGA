@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prega+</title><meta name="theme-color" content="#1a365d"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+  <strong>Prega+</strong>
+  <span id="timer">00:00</span>
+  <button id="tstart">▶/⏸</button><button id="treset">↺</button>
+  <label>min <input id="tmin" type="number" value="30" min="1" style="width:4.5em"></label>
+  <select id="version"></select>
+  
+  <button id="import">Importar Bíblia</button>
+  <input id="importfile" type="file" accept=".json" hidden>
+  <button id="mode">Modo púlpito</button>
+  <button id="theme">☾/☀</button>
+  <button id="gen">Gerar slides</button>
+  <button id="clear">Limpar tela</button>
+  <button id="openproj">Abrir projeção</button>
+  <button id="export">Exportar PDF</button>
+  <button id="exportpptx">Exportar PowerPoint</button>
+  <span id="pulpitbar"></span>
+</header>
+<main id="main" class="edit">
+  <section id="editor">
+    <textarea id="src" spellcheck="false"></textarea>
+    <p class="hint">Prefixos: <b>#</b> tópico · <b>@</b> texto bíblico (ex.: @ João 3:16) · <b>~</b> ilustração · <b>&gt;</b> aplicação · <b>*</b> estatística/citação. Sem prefixo, uma referência como "João 3:16" vira texto bíblico.</p>
+  </section>
+  <section id="view"></section>
+</main>
+<footer id="footer" style="max-width:1100px;margin:auto;padding:12px;border-top:1px solid #8884">
+  <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+    <div id="qr" style="width:120px;min-height:120px;background:#fff"></div>
+    <div>
+      <p class="hint" style="margin-top:0">Escaneie o QR code para conectar outro dispositivo.</p>
+      <p class="hint" id="net"></p>
+      <p class="hint">Bíblia Livre (BLIVRE) © Diego Santos, Mario Sérgio e Marco Teles, 2018 — licença CC BY 4.0 Brasil. Versões extras: botão "Importar Bíblia".</p>
+    </div>
+  </div>
+</footer>
+<p id="creator" class="hint">Criado por Editora EFA - Josiel Pereira Santos · Todos os direitos reservados</p>
+<script src="/vendor/pptxgen.js"></script>
+<script src="app.js"></script>
+</body></html>
+

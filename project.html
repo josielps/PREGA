@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prega+ Projeção</title><link rel="stylesheet" href="style.css"></head>
+<body class="proj"><div id="slide"></div>
+<script>
+const el = document.getElementById('slide');
+function show(s) {
+  el.className = 'fade'; void el.offsetWidth;
+  el.textContent = '';
+  if (!s) { document.body.style.background = '#000'; return; }
+  document.body.style.background = '#000';
+  el.append(document.createTextNode(s.text));
+  if (s.ref) { const r = document.createElement('span'); r.className = 'ref'; r.textContent = s.ref; el.append(r); }
+}
+const room = new URLSearchParams(location.search).get('room') || 'default';
+const bc = 'BroadcastChannel' in window ? new BroadcastChannel('prega-' + room) : null;
+if (bc) bc.onmessage = (e) => show(e.data.slide);
+const es = new EventSource('/api/events?room=' + encodeURIComponent(room));
+es.onmessage = (e) => show(JSON.parse(e.data).slide);
+document.addEventListener('dblclick', () => document.documentElement.requestFullscreen?.());
+</script></body></html>
